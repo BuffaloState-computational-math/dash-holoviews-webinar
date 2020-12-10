@@ -1,1 +1,1 @@
-web: gunicorn taxi_dbc.examples.app:server
+web: gunicorn examples.taxi_dbc.app:server

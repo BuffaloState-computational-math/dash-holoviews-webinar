@@ -10,8 +10,8 @@ from holoviews.operation.datashader import datashade
 from holoviews.plotting.plotly.dash import to_dash
 from holoviews.selection import link_selections
 
-from download_dataset import download_dataset
-from mapbox_token import get_mapbox_token
+from .download_dataset import download_dataset
+from .mapbox_token import get_mapbox_token
 import pandas as pd
 import plotly.io as pio
 from plotly import colors

@@ -1,1 +1,1 @@
-web: gunicorn examples.taxi_dbc.app:server
+web: gunicorn --chdir examples/taxi_dbc app:server

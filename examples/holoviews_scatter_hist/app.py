@@ -4,27 +4,24 @@ df = iris()
 
 # Build HoloViews Dataset from Pandas DataFrame
 import holoviews as hv
-from holoviews.plotting.plotly.dash import to_dash
 dataset = hv.Dataset(df)
 
-# Build Scatter and Histogram HoloViews Elements, and side-by-side layout
+# Build HoloViews Elements
 scatter = hv.Scatter(dataset, kdims=["sepal_length"], vdims=["sepal_width"])
 hist = hv.operation.histogram(
     dataset, dimension="petal_width", normed=False
-)
-row = scatter + hist
+).opts(height=300)
 
-# Link selections across subplots
-linked_row = hv.selection.link_selections(row)
+# Build side-by-side subplot of scatter and histogram
+row = scatter + hist
 
 # Build Dash app
 import dash
 app = dash.Dash(__name__)
 
 # Build Dash components from HoloViews row Layout
-components = to_dash(
-    app, [linked_row], reset_button=True
-)
+from holoviews.plotting.plotly.dash import to_dash
+components = to_dash(app, [row])
 
 # Build Dash layout
 import dash_html_components as html

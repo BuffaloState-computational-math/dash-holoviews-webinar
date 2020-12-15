@@ -1,4 +1,5 @@
-# Load geographic dataset and convert from lon/lat to web-mercator easting/northing coordinates
+# Load geographic dataset and convert from lon/lat to 
+# web-mercator easting/northing coordinates
 from plotly.data import carshare
 import holoviews as hv
 df = carshare()
@@ -12,6 +13,9 @@ from holoviews.element.tiles import CartoDark
 points = hv.Scatter(df, "easting", "northing").opts(color="crimson")
 tiles = CartoDark()
 overlay = tiles * points
+
+# Set map figure height
+overlay.opts(height=600)
 
 # Build Dash app
 import dash

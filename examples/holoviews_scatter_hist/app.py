@@ -10,7 +10,7 @@ dataset = hv.Dataset(df)
 scatter = hv.Scatter(dataset, kdims=["sepal_length"], vdims=["sepal_width"])
 hist = hv.operation.histogram(
     dataset, dimension="petal_width", normed=False
-).opts(height=300)
+)
 
 # Build side-by-side subplot of scatter and histogram
 row = scatter + hist
